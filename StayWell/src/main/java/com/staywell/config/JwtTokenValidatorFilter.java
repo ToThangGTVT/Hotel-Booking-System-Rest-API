@@ -47,6 +47,8 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
+        System.out.println("Response từ controller đã được trả về");
+
     }
 
     //this time this validation filter has to be executed for all the apis except the /login api

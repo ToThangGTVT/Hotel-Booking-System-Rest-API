@@ -1,6 +1,7 @@
 package com.staywell.config;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -12,11 +13,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @Configuration
 @EnableMethodSecurity
-public class AppConfig {
+public class AppConfig implements WebMvcConfigurer {
 
     @Bean
     public SecurityFilterChain springSecurityConfiguration(HttpSecurity http) throws Exception {
@@ -33,13 +36,11 @@ public class AppConfig {
                     req.requestMatchers(HttpMethod.POST, "/staywell/hotels/login").permitAll();
                     req.requestMatchers(HttpMethod.POST, "/staywell/rooms/add").hasRole("HOTEL");
                     req.requestMatchers(HttpMethod.PUT, "/staywell/customers/update").hasRole("CUSTOMER");
-                    req.requestMatchers(HttpMethod.GET, "/staywell/customers/getToBeDeletedAccounts").permitAll();
+                    req.requestMatchers(HttpMethod.GET, "/staywell/customers/getToBeDeletedAccounts").hasRole("ADMIN");
                     req.anyRequest().authenticated();
                 })
-                .addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
                 .addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class);
         return http.build();
-
     }
 
     @Bean
