@@ -20,7 +20,7 @@ import com.staywell.service.ReservationService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/staywell/reservations")
+@RequestMapping("/api/reservations")
 @AllArgsConstructor
 public class ReservationController {
 

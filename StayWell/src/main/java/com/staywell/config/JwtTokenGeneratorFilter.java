@@ -38,9 +38,9 @@
 //        if (null == authentication) {
 //            return;
 //        }
-//        if (path.equals("/staywell/admins/login")
-//                || path.equals("/staywell/customers/login")
-//                || path.equals("/staywell/hotels/login")) {
+//        if (path.equals("/api/admins/login")
+//                || path.equals("/api/customers/login")
+//                || path.equals("/api/hotels/login")) {
 //
 //            System.out.println("auth.getAuthorities "+authentication.getAuthorities());
 //            SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes());

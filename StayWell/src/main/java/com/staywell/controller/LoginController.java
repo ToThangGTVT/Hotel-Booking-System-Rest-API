@@ -1,25 +1,23 @@
 package com.staywell.controller;
 
-import com.staywell.dto.request.LoginRequest;
-import com.staywell.service.LoginService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.staywell.dto.request.LoginRequest;
 import com.staywell.model.Admin;
 import com.staywell.model.Customer;
 import com.staywell.model.Hotel;
-import com.staywell.repository.AdminDao;
-import com.staywell.repository.CustomerDao;
-import com.staywell.repository.HotelDao;
+import com.staywell.service.LoginService;
+
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/staywell")
+@RequestMapping("/api")
 public class LoginController {
 
     @Autowired

@@ -21,7 +21,7 @@ import com.staywell.service.CustomerService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/staywell/customers")
+@RequestMapping("/api/customers")
 @AllArgsConstructor
 public class CustomerController {
 

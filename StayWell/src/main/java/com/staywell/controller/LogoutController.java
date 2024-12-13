@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/staywell")
+@RequestMapping("/api")
 public class LogoutController {
 
     @PostMapping("/admins/logout")

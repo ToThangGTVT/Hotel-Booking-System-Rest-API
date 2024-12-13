@@ -13,7 +13,7 @@ import com.staywell.service.AdminService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/staywell/admins")
+@RequestMapping("/api/admins")
 @AllArgsConstructor
 public class AdminController {
 

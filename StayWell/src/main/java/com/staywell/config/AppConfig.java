@@ -27,16 +27,16 @@ public class AppConfig implements WebMvcConfigurer {
                 .csrf().disable()
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
-                    req.requestMatchers(HttpMethod.POST, "/staywell/customers/register").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "/api/customers/register").permitAll();
                     req.requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/v3/api-docs*", "/swagger-resources/**", "/webjars/**").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/staywell/admins/register").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/staywell/hotels/register").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/staywell/customers/login").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/staywell/admins/login").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/staywell/hotels/login").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/staywell/rooms/add").hasRole("HOTEL");
-                    req.requestMatchers(HttpMethod.PUT, "/staywell/customers/update").hasRole("CUSTOMER");
-                    req.requestMatchers(HttpMethod.GET, "/staywell/customers/getToBeDeletedAccounts").hasRole("ADMIN");
+                    req.requestMatchers(HttpMethod.POST, "/api/admins/register").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "/api/hotels/register").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "/api/customers/login").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "/api/admins/login").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "/api/hotels/login").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "/api/rooms/add").hasRole("HOTEL");
+                    req.requestMatchers(HttpMethod.PUT, "/api/customers/update").hasRole("CUSTOMER");
+                    req.requestMatchers(HttpMethod.GET, "/api/customers/getToBeDeletedAccounts").hasRole("ADMIN");
                     req.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class);
